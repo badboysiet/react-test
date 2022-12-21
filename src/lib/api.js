@@ -1,8 +1,8 @@
 
 export default {
-    getMoviesList: 'https://api.themoviedb.org/3/discover/movie',
+    getUpcomingMoviesList: 'https://api.themoviedb.org/3/movie/upcoming/',
+    getPopularMoviesList: 'https://api.themoviedb.org/3/movie/popular/',
     getMovieDetail: 'https://api.themoviedb.org/3/movie/',
-    getCastDetail: '/casts',
-    searchMovieList: 'https://api.themoviedb.org/3/search/movie?query='
+    //searchMovieList: 'https://api.themoviedb.org/3/search/movie?query='
 }
 

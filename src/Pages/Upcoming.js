@@ -1,12 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import movies from '../Action/Movie/movie';
+import { URL_IMG, IMG_SIZE_LARGE} from '../config';
 
-const Upcoming = (props) => {
+const Upcoming = () => {
+    const [upcoming , setUpcoming] = useState([])
     useEffect(() => {
-       console.log('Upcoming Api call')
+        movies.getUpcomingMoviesList((res) => {
+            setUpcoming(res.data)
+        })
     },[])
     return (
         <div>
-            Upcoming
+            {upcoming.map((v) => {
+                return <img src={URL_IMG+IMG_SIZE_LARGE+v.poster_path} />
+            })}
         </div>
     );
 }
