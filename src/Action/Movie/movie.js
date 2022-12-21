@@ -2,25 +2,15 @@ import api from '../../lib/request';
 import apiPaths from '../../lib/api';
 import { API_KEY, API_KEY_ALT } from '../../config';
 
-
 const movies = {
     getMoviesList: function (page, callback) {
         let fetchMoviesUrl = apiPaths.getMoviesList + API_KEY;
         if (page) {
             fetchMoviesUrl = fetchMoviesUrl + `&page=${page}`;
         }
-        return dispatch => {
             api.setMethod('GET').sendRequest(fetchMoviesUrl, null, false, function (response) {
-                dispatch({
-                    type: 'getMoviesList',
-                    page: response.data.page,
-                    totalPages: response.data.total_pages,
-                    totalResults: response.data.total_results,
-                    movies: response.data.results
-                });
                 callback({ data: response.data.results });
-            }, dispatch)
-        }
+        })
     },
     getMovieDetail: function (movieId, callback) {
         const fetchMovieDetailUrl = apiPaths.getMovieDetail + movieId + API_KEY;
